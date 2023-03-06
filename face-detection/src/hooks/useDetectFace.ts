@@ -2,12 +2,12 @@ import type { Human, Config } from '@vladmandic/human';
 import { useState, useCallback, useEffect } from 'react';
 
 export const humanConfig: Partial<Config> = { // user configuration for human, used to fine-tune behavior
-    debug: true,
-    modelBasePath: 'https://cdn.jsdelivr.net/npm/@vladmandic/human@3.0.5/models/',
+    debug: false,
+    modelBasePath: 'https://cdn.jsdelivr.net/npm/@vladmandic/human@3.0.5/models',
     filter: { enabled: true, equalization: false, flip: false },
     face: {
         enabled: true,
-        detector: { rotation: false, maxDetected: 100, minConfidence: 0.2, return: true },
+        detector: { rotation: true, maxDetected: 100, minConfidence: 0.2, return: true },
         iris: { enabled: false },
         description: { enabled: false },
         emotion: { enabled: false },

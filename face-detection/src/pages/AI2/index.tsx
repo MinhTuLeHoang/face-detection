@@ -16,8 +16,6 @@ const Index: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Image src='truc_dem_o_benh_vien.jpg' alt='hinhanh'/>
-
       <canvas id="canvas" className={styles.output} /> {/* placeholder element that will be used by human for output */}
       <video id="video" className={styles.webcam} autoPlay muted /> {/* placeholder element that will be used by webcam */}
       <div id="status" className={styles.status}></div>
