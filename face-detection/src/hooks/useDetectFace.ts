@@ -33,6 +33,7 @@ const useDetectFace = ({ be }: useDetectFaceProps) => {
     };
 
     const [time, setTime] = useState<any>(0);
+    const [image64, setImage64] = useState<any>(''); // base64 image
     const [image, setImage] = useState<any>('');
     const [yaw, setYaw] = useState(0);
     const [status, setStatus] = useState<string[]>([]);
@@ -82,10 +83,19 @@ const useDetectFace = ({ be }: useDetectFaceProps) => {
 
     const onImageChange = (event: any) => {
         if (event.target.files && event.target.files[0]) {
+            console.log("event.target.files[0]: ", event.target.files[0]);
             const tmpList = status;
             tmpList.push('image loaded');
             setStatus(tmpList);
             setImage(URL.createObjectURL(event.target.files[0]));
+
+            const reader = new FileReader();
+            reader.readAsDataURL(event.target.files[0]);
+            reader.onload = () => {
+                var base64 = reader.result;
+                console.log(base64);
+                setImage64(base64);
+            };
         }
     }
 
@@ -108,12 +118,14 @@ const useDetectFace = ({ be }: useDetectFaceProps) => {
         tmpList.push('detecting done');
         setStatus(tmpList);
         setTime(end - start);
+        return deg(res.face?.[0]?.rotation?.angle?.yaw);
         // eslint-disable-next-line
     }, [human])
 
     return {
         // init,
         image,
+        image64,
         yaw,
         onImageChange,
         getYaw,

@@ -10,7 +10,7 @@ const AIPage = () => {
     const beList = ['cpu', 'wasm', 'webgl', 'webgpu'];
     if (typeof(be) !== 'string') be = 'webgl';
     if (beList.indexOf(be) < 0) be = 'webgl';
-    const { image, onImageChange, yaw, getYaw, status, human, response, time } = useDetectFace({be} as useDetectFaceProps);
+    const { image64, onImageChange, yaw, getYaw, status, human, response, time } = useDetectFace({be} as useDetectFaceProps);
     const [img, setImg] = useState<any>();
     const [isPress, setIsPress] = useState(false);
 
@@ -24,11 +24,11 @@ const AIPage = () => {
     // }
 
 
-    useEffect(() => {
-        if (image) {
-            console.log("image", image)
-        }
-    }, [image])
+    // useEffect(() => {
+    //     if (image) {
+    //         console.log("image", image)
+    //     }
+    // }, [image])
 
     useEffect(()=>{
         setImg(document.getElementsByTagName('img')[0]);
@@ -44,8 +44,8 @@ const AIPage = () => {
 
             <br /><br />
 
-            <img src={image} alt='abc' width={300} height={400} />
-            <p>{image && image}</p>
+            <img src={image64} alt='abc' width={300} height={400} />
+            <p style={{height: '100px', overflow: 'scroll', wordWrap: 'break-word'}}>{image64 && image64}</p>
 
             <br /><br />
 
