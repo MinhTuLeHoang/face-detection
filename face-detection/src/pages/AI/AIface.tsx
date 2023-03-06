@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useDetectFace, { useDetectFaceProps } from "hooks/useDetectFace";
-import Image from "next/image";
+// import Image from "next/image";
 import { useRouter } from 'next/router'
 
 
@@ -44,7 +44,7 @@ const AIPage = () => {
 
             <br /><br />
 
-            <Image src={image} alt='abc' width={300} height={400} />
+            <img src={image} alt='abc' width={300} height={400} />
 
             <br /><br />
 
