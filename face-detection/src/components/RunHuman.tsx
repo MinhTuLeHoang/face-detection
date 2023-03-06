@@ -43,6 +43,7 @@ class RunHuman extends Component<Props, State> {
     this.canvas = document.getElementById(this.props.outputId) as (HTMLCanvasElement | undefined) || document.createElement('canvas');
     import('@vladmandic/human').then((H) => {
       this.human = new H.default(config) as Human;
+      console.log("human",this.human);
       log('human version:', this.human.version, '| tfjs version:', this.human.tf.version['tfjs-core']);
       log('platform:', this.human.env.platform, '| agent:', this.human.env.agent);
       status('loading models...');
