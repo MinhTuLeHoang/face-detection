@@ -1,8 +1,7 @@
-// import { Human } from '../../../dists/human.esm.js';
 import type { Human, Config } from '@vladmandic/human';
 import { useState, useCallback, useEffect } from 'react';
 
-const humanConfig: Partial<Config> = { // user configuration for human, used to fine-tune behavior
+export const humanConfig: Partial<Config> = { // user configuration for human, used to fine-tune behavior
     debug: true,
     modelBasePath: 'https://cdn.jsdelivr.net/npm/@vladmandic/human@3.0.5/models/',
     filter: { enabled: true, equalization: false, flip: false },
@@ -22,14 +21,13 @@ const humanConfig: Partial<Config> = { // user configuration for human, used to 
     segmentation: { enabled: false },
 };
 
-const deg = (rad: any) => Math.round((rad || 0) * 180 / Math.PI);
+export const deg = (rad: any) => Math.round((rad || 0) * 180 / Math.PI);
 
 const useDetectFace = () => {
     const [time, setTime] = useState<any>(0);
     const [image, setImage] = useState<any>('');
     const [yaw, setYaw] = useState(0);
     const [status, setStatus] = useState<string[]>([]);
-    // const [ready, setReady] = useState(false);
     const [human, setHuman] = useState<Human | null>(null);
 
     useEffect(() => {

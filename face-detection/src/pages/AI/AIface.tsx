@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
-import React from "react";
-import useDetectFace from "./hooks/useDetectFace";
+import { useEffect, useState } from "react";
+import useDetectFace from "hooks/useDetectFace";
+import Image from "next/image";
 
 
 const AIPage = () => {
@@ -39,7 +39,7 @@ const AIPage = () => {
 
             <br /><br />
 
-            <img src={image} alt='abc' width={300} height={400} />
+            <Image src={image} alt='abc' width={300} height={400} />
 
             <br /><br />
 
