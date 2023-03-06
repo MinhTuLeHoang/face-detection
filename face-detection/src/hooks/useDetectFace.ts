@@ -37,6 +37,7 @@ const useDetectFace = ({ be }: useDetectFaceProps) => {
     const [yaw, setYaw] = useState(0);
     const [status, setStatus] = useState<string[]>([]);
     const [human, setHuman] = useState<Human | null>(null);
+    const [response, setResponse] = useState<any>();
 
     useEffect(() => {
         const tmpList = status;
@@ -100,6 +101,7 @@ const useDetectFace = ({ be }: useDetectFaceProps) => {
         const start = new Date().getTime();
         const res = await human.detect(imgElement, humanConfig);
         const end = new Date().getTime();
+        setResponse(res);
         console.timeLog('detect', 'finish detection');
         console.log("res", res);
         setYaw(deg(res.face?.[0]?.rotation?.angle?.yaw));
@@ -117,6 +119,7 @@ const useDetectFace = ({ be }: useDetectFaceProps) => {
         getYaw,
         status,
         human,
+        response,
         time
     }
 }

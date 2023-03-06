@@ -10,7 +10,7 @@ const AIPage = () => {
     const beList = ['cpu', 'wasm', 'webgl', 'webgpu'];
     if (typeof(be) !== 'string') be = 'webgl';
     if (beList.indexOf(be) < 0) be = 'webgl';
-    const { image, onImageChange, yaw, getYaw, status, human, time } = useDetectFace({be} as useDetectFaceProps);
+    const { image, onImageChange, yaw, getYaw, status, human, response, time } = useDetectFace({be} as useDetectFaceProps);
     const [img, setImg] = useState<any>();
     const [isPress, setIsPress] = useState(false);
 
@@ -67,6 +67,11 @@ const AIPage = () => {
             <p>--------------------------------</p>
             <p>yaw: {yaw}</p>
             <p>in: {time}ms</p>
+
+
+            <br/><br/>
+            <p>--------------------------------</p>
+            <p>{response && JSON.stringify(response)}</p>
 
         </div>
     )
