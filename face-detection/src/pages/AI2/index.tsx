@@ -13,7 +13,7 @@ const Index: NextPage = () => {
       <Head>
         <title>Human</title>
         <meta name="description" content="Human: Demo with TypeScript/ReactJS/NextJS" />
-        <link rel="icon" href="/favicon.ico" />
+        {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
       <canvas id="canvas" className={styles.output} /> {/* placeholder element that will be used by human for output */}
@@ -21,6 +21,7 @@ const Index: NextPage = () => {
       <div id="status" className={styles.status}></div>
       <div id="log" className={styles.log}></div>
       <div id="performance" className={styles.performance}></div>
+      <div id="yaw" className={styles.log}></div>
       <InitWebCam elementId="video"/> {/* initialized webcam using htmlvideo element with specified id */}
       <RunHuman inputId="video" outputId="canvas"/> {/* loads and start human using specified input video element and output canvas element */}
 
@@ -31,6 +32,9 @@ const Index: NextPage = () => {
         <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer"><Image src="/react.svg" alt="ReactJS Logo" width={48} height={48} loader={imageLoader} /></a>
         <a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer"><Image src="/next.png" alt="NextJS Logo" width={64} height={64} loader={imageLoader} /></a>
       </footer>
+
+        <img id='resultImage' src={''} alt="resultImage" />
+        <p id='result'></p>
     </div>
   )
 }
