@@ -109,7 +109,9 @@ const useDetectFace = ({ be }: useDetectFaceProps) => {
         // setStatus(tmpList);
         console.time('detect');
         const start = new Date().getTime();
+        window.alert('start detecting')
         const res = await human.detect(imgElement, humanConfig);
+        window.alert('finish detecting')
         const end = new Date().getTime();
         setResponse(res);
         console.timeLog('detect', 'finish detection');
