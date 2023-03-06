@@ -3,7 +3,7 @@ import type { Human, Config } from '@vladmandic/human';
 import { log, status } from './logging';
 
 const config: Partial<Config> = {
-  debug: false,
+  debug: true,
   modelBasePath: 'https://cdn.jsdelivr.net/npm/@vladmandic/human/modelsn',
   filter: { enabled: false, equalization: false, flip: false },
   face: { 

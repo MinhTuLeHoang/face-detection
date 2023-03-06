@@ -10,14 +10,14 @@ export interface useDetectFaceProps {
 
 const useDetectFace = ({ be }: useDetectFaceProps) => {
     const humanConfig: Partial<Config> = { // user configuration for human, used to fine-tune behavior
-        debug: false,
+        debug: true,
         backend: be,
         modelBasePath: 'https://cdn.jsdelivr.net/npm/@vladmandic/human@3.0.5/models',
         filter: { enabled: true, equalization: false, flip: false },
         face: {
             enabled: true,
             detector: { rotation: false },
-            mesh: { enabled: true },
+            mesh: { enabled: true, keepInvalid: true },
             attention: { enabled: false },
             iris: { enabled: false },
             description: { enabled: false },
@@ -98,7 +98,7 @@ const useDetectFace = ({ be }: useDetectFaceProps) => {
         // setStatus(tmpList);
         console.time('detect');
         const start = new Date().getTime();
-        const res = await human.detect(imgElement);
+        const res = await human.detect(imgElement, humanConfig);
         const end = new Date().getTime();
         console.timeLog('detect', 'finish detection');
         console.log("res", res);
