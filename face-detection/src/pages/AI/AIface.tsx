@@ -71,8 +71,10 @@ const AIPage = () => {
 
             <br/><br/>
             <p>--------------------------------</p>
-            <p>{response && JSON.stringify(response)}</p>
-
+            <p>{response && JSON.stringify(response?.face?.score)}</p>
+            <p>{response && JSON.stringify(response?.face?.faceScore)}</p>
+            <p>{response && JSON.stringify(response?.face?.boxScore)}</p>
+            <p>{response && JSON.stringify(response?.face?.rotation)}</p>
         </div>
     )
 }
