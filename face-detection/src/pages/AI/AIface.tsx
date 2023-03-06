@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
-import useDetectFace from "hooks/useDetectFace";
+import useDetectFace, { useDetectFaceProps } from "hooks/useDetectFace";
 import Image from "next/image";
+import { useRouter } from 'next/router'
 
 
 const AIPage = () => {
-    // const [image, setImage] = useState<any>(null)
-    const { image, onImageChange, yaw, getYaw, status, human, time } = useDetectFace();
+    const router = useRouter();
+    let {be} = router.query;
+    const beList = ['cpu', 'wasm', 'webgl', 'webgpu'];
+    if (typeof(be) !== 'string') be = 'webgl';
+    if (beList.indexOf(be) < 0) be = 'webgl';
+    const { image, onImageChange, yaw, getYaw, status, human, time } = useDetectFace({be} as useDetectFaceProps);
     const [img, setImg] = useState<any>();
     const [isPress, setIsPress] = useState(false);
 

@@ -1,31 +1,37 @@
 import type { Human, Config } from '@vladmandic/human';
 import { useState, useCallback, useEffect } from 'react';
 
-export const humanConfig: Partial<Config> = { // user configuration for human, used to fine-tune behavior
-    debug: false,
-    modelBasePath: 'https://cdn.jsdelivr.net/npm/@vladmandic/human@3.0.5/models',
-    filter: { enabled: true, equalization: false, flip: false },
-    face: { 
-        enabled: true, 
-        detector: { rotation: false }, 
-        mesh: { enabled: true }, 
-        attention: { enabled: false }, 
-        iris: { enabled: false }, 
-        description: { enabled: false }, 
-        emotion: { enabled: false }, 
-        antispoof: { enabled: false }, 
-        liveness: { enabled: false } 
-      },
-    body: { enabled: false },
-    hand: { enabled: false },
-    object: { enabled: false },
-    gesture: { enabled: false },
-    segmentation: { enabled: false },
-};
 
 export const deg = (rad: any) => Math.round((rad || 0) * 180 / Math.PI);
 
-const useDetectFace = () => {
+export interface useDetectFaceProps {
+    be: 'cpu' | 'wasm' | 'webgl' | 'webgpu';
+}
+
+const useDetectFace = ({ be }: useDetectFaceProps) => {
+    const humanConfig: Partial<Config> = { // user configuration for human, used to fine-tune behavior
+        debug: false,
+        backend: be,
+        modelBasePath: 'https://cdn.jsdelivr.net/npm/@vladmandic/human@3.0.5/models',
+        filter: { enabled: true, equalization: false, flip: false },
+        face: {
+            enabled: true,
+            detector: { rotation: false },
+            mesh: { enabled: true },
+            attention: { enabled: false },
+            iris: { enabled: false },
+            description: { enabled: false },
+            emotion: { enabled: false },
+            antispoof: { enabled: false },
+            liveness: { enabled: false }
+        },
+        body: { enabled: false },
+        hand: { enabled: false },
+        object: { enabled: false },
+        gesture: { enabled: false },
+        segmentation: { enabled: false },
+    };
+
     const [time, setTime] = useState<any>(0);
     const [image, setImage] = useState<any>('');
     const [yaw, setYaw] = useState(0);
@@ -55,7 +61,7 @@ const useDetectFace = () => {
                 });
             });
         });
-    // eslint-disable-next-line
+        // eslint-disable-next-line
     }, [])
 
     // const init = useCallback(async () => {
@@ -100,7 +106,7 @@ const useDetectFace = () => {
         tmpList.push('detecting done');
         setStatus(tmpList);
         setTime(end - start);
-    // eslint-disable-next-line
+        // eslint-disable-next-line
     }, [human])
 
     return {
