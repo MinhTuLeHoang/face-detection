@@ -79,9 +79,9 @@ class RunHuman extends Component<Props, State> {
     if (this && this.state && this.state.ready) this.detect(); // start detection loop once component is created and human state is ready trigger detection and draw loops
     if (!this || !this.video || !this.canvas || !this.human || !this.human.result) return null;
     if (!this.video.paused) {
-      const interpolated = this.human.next(this.human.result); // smoothen result using last-known results
+      // const interpolated = this.human.next(this.human.result); // smoothen result using last-known results
       this.human.draw.canvas(this.video, this.canvas); // draw canvas to screen
-      this.human.draw.all(this.canvas, interpolated); // draw labels, boxes, lines, etc.
+      // this.human.draw.all(this.canvas, interpolated); // draw labels, boxes, lines, etc.
     }
     status(this.video.paused ? 'paused' : `fps: ${this.fps.toFixed(1).padStart(5, ' ')}`); // write status
     return null;

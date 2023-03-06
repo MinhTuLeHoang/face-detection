@@ -35,6 +35,7 @@ export const saveImg = (degree:number) => {
     const imgURL = canvas.toDataURL('image/png');
     img.src = imgURL;
     result.innerHTML = String(degree);
+    // window.alert('image save at: ' + imgURL + ' \nwith ' + String(degree) + ' degree');
     // const link = document.createElement('a');
     // link.download = 'image.png';
     // link.href = imgURL;
