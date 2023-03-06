@@ -8,11 +8,11 @@ const config: Partial<Config> = {
   filter: { enabled: false, equalization: false, flip: false },
   face: { 
     enabled: true, 
-    detector: { rotation: true }, 
+    detector: { rotation: false }, 
     mesh: { enabled: true }, 
     attention: { enabled: false }, 
     iris: { enabled: false }, 
-    description: { enabled: true }, 
+    description: { enabled: false }, 
     emotion: { enabled: false }, 
     antispoof: { enabled: false }, 
     liveness: { enabled: false } 

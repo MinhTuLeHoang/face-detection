@@ -47,6 +47,10 @@ const AIPage = () => {
 
             <br /><br />
 
+            <button onClick={() => { console.log(human) }} style={{ backgroundColor: 'yellow', border: '2px solid white', color: 'white', padding: '10px' }}>Show Human</button>
+
+            <br /><br />
+
             <p>status: {status?.map((s)=><span key={s}>{s} - </span>)}</p>
             <p>human version:{human?.version}, tfjs version: {human?.tf.version['tfjs-core']}</p>
             <p>platform: {human?.env.platform}</p>
