@@ -114,6 +114,7 @@ const useDetectFace = ({ be }: useDetectFaceProps) => {
         setResponse(res);
         console.timeLog('detect', 'finish detection');
         console.log("res", res);
+        window.alert("yaw: " + res.face?.[0]?.rotation?.angle?.yaw);
         setYaw(deg(res.face?.[0]?.rotation?.angle?.yaw));
         tmpList.push('detecting done');
         setStatus(tmpList);
