@@ -45,6 +45,7 @@ const AIPage = () => {
             <br /><br />
 
             <img src={image} alt='abc' width={300} height={400} />
+            <p>{image && image}</p>
 
             <br /><br />
 
