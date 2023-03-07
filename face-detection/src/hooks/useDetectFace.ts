@@ -99,7 +99,7 @@ const useDetectFace = ({ be }: useDetectFaceProps) => {
         }
     }
 
-    const getYaw = useCallback(async (imgElement: HTMLImageElement) => {
+    const getYaw = useCallback(async (imgElement: HTMLImageElement | undefined | null) => {
         console.log("human", human);
         console.log("imgElement", imgElement);
         if (!human || !imgElement) return;

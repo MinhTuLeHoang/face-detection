@@ -63,7 +63,7 @@ const AIPage = () => {
 
             <br /><br />
 
-            {!isPress2 && <button onClick={() => { setIsPress(true); getYaw(imgSelect()) }} style={{ backgroundColor: 'blue', border: '2px solid black', color: 'white', padding: '10px' }}>Get data2</button>}
+            {!isPress2 && <button onClick={() => { setIsPress(true); getYaw(imgSelect() as HTMLImageElement) }} style={{ backgroundColor: 'blue', border: '2px solid black', color: 'white', padding: '10px' }}>Get data2</button>}
 
             <br /><br />
 
@@ -94,7 +94,7 @@ const AIPage = () => {
             <br/><br/>
             <p>--------------------------------</p>
 
-            <img src="/anh.jpg" height={256} width={256} id="image1"/>
+            <img src="/anh.jpg" height={256} width={256} id="image1" alt="imgFromLocal" />
         </div>
     )
 }
