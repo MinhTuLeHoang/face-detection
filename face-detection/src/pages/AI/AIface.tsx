@@ -51,7 +51,7 @@ const AIPage = () => {
             <br /><br />
             <h2>Upload image</h2>
 
-            <img src={image64} alt='abc' width={256} height={256} onLoad={()=>{drawCanvas(imgSelect())}} />
+            <img src={image64} alt='abc' width={256} height={256} onLoad={()=>{drawCanvas(image64)}} />
 
             <p style={{height: '100px', overflow: 'scroll', wordWrap: 'break-word'}}>{image64 && image64}</p>
 
