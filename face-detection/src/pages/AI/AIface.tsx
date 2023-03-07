@@ -10,26 +10,13 @@ const AIPage = () => {
     const beList = ['cpu', 'wasm', 'webgl', 'webgpu'];
     if (typeof(be) !== 'string') be = 'webgl';
     if (beList.indexOf(be) < 0) be = 'webgl';
-    const { image64, onImageChange, yaw, getYaw, status, human, response, time } = useDetectFace({be} as useDetectFaceProps);
+    const { image64, onImageChange, yaw, getYaw, drawCanvas, status, human, response, time } = useDetectFace({be} as useDetectFaceProps);
     const [img, setImg] = useState<any>();
     const [isPress, setIsPress] = useState(false);
     const [isPress2, setIsPress2] = useState(false);
-
-    // const onImageChange = (event:any) => {
-    //     if (event.target.files && event.target.files[0]) {
-    //         setImage(URL.createObjectURL(event.target.files[0]));
-
-    //         const img = document.getElementsByTagName('img')[0];
-    //         console.log("img", img);
-    //     }
-    // }
+    const [isPress3, setIsPress3] = useState(false);
 
 
-    // useEffect(() => {
-    //     if (image) {
-    //         console.log("image", image)
-    //     }
-    // }, [image])
 
     useEffect(()=>{
         setImg(document.getElementsByTagName('img')[0]);
@@ -43,6 +30,16 @@ const AIPage = () => {
         }
     }
 
+    const canvasSelect = () => {
+        if (document !== undefined) {
+            const canvas = document.getElementById('canvas');
+            console.log("canvas", canvas);
+            return canvas;
+        }
+    }
+
+
+
     return (
         <div>
             <h3>Nhập ảnh nha đồng chí</h3>
@@ -52,18 +49,23 @@ const AIPage = () => {
             <input type='file' onChange={onImageChange} accept="image/png, image/jpeg, image/jpg" ></input>
 
             <br /><br />
+            <h2>Upload image</h2>
 
-            <img src={image64} alt='abc' width={256} height={256} />
+            <img src={image64} alt='abc' width={256} height={256} onLoad={()=>{drawCanvas(imgSelect())}} />
 
             <p style={{height: '100px', overflow: 'scroll', wordWrap: 'break-word'}}>{image64 && image64}</p>
 
             <br /><br />
 
-            {!isPress && <button onClick={() => { setIsPress(true); getYaw(img) }} style={{ backgroundColor: 'blue', border: '2px solid black', color: 'white', padding: '10px' }}>Get data</button>}
+            {!isPress && <button onClick={() => { setIsPress(true); getYaw(img) }} style={{ backgroundColor: 'blue', border: '2px solid black', color: 'white', padding: '10px' }}>Get data from upload image</button>}
 
             <br /><br />
 
-            {!isPress2 && <button onClick={() => { setIsPress(true); getYaw(imgSelect() as HTMLImageElement) }} style={{ backgroundColor: 'blue', border: '2px solid black', color: 'white', padding: '10px' }}>Get data2</button>}
+            {!isPress2 && <button onClick={() => { setIsPress2(true); getYaw(imgSelect() as HTMLImageElement) }} style={{ backgroundColor: 'blue', border: '2px solid black', color: 'white', padding: '10px' }}>Get data from local image</button>}
+
+            <br /><br />
+
+            {!isPress3 && <button onClick={() => { setIsPress3(true); getYaw(canvasSelect() as HTMLImageElement) }} style={{ backgroundColor: 'blue', border: '2px solid black', color: 'white', padding: '10px' }}>Get data from canvas</button>}
 
             <br /><br />
 
@@ -93,8 +95,16 @@ const AIPage = () => {
 
             <br/><br/>
             <p>--------------------------------</p>
+            <h2>Local image</h2>
 
             <img src="/anh.jpg" height={256} width={256} id="image1" alt="imgFromLocal" />
+
+
+            <br/><br/>
+            <p>--------------------------------</p>
+            <h2>Canvas</h2>
+
+            <canvas id="canvas" width={256} height={256} style={{border: '1px solid #000000'}}></canvas>
         </div>
     )
 }

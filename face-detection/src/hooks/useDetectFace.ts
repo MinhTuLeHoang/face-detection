@@ -1,5 +1,5 @@
 import type { Human, Config } from '@vladmandic/human';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, Context } from 'react';
 
 
 export const deg = (rad: any) => Math.round((rad || 0) * 180 / Math.PI);
@@ -83,6 +83,7 @@ const useDetectFace = ({ be }: useDetectFaceProps) => {
 
     const onImageChange = (event: any) => {
         if (event.target.files && event.target.files[0]) {
+            var base64;
             console.log("event.target.files[0]: ", event.target.files[0]);
             const tmpList = status;
             tmpList.push('image loaded');
@@ -92,10 +93,24 @@ const useDetectFace = ({ be }: useDetectFaceProps) => {
             const reader = new FileReader();
             reader.readAsDataURL(event.target.files[0]);
             reader.onload = () => {
-                var base64 = reader.result;
+                base64 = reader.result;
                 console.log(base64);
                 setImage64(base64);
             };
+        }
+    }
+
+    const drawCanvas = (img:any) => {
+        if (document) {
+            var c = document.getElementById("canvas") as HTMLCanvasElement;
+            console.log('canvas: ', c)
+            if (!c) return;
+            var ctx = c.getContext("2d") as any;
+            ctx.drawImage(img, 1, 1, 256, 256);
+            // ctx.drawImage(base64, 10, 10);
+        }
+        else {
+            console.log("document is null !!!");
         }
     }
 
@@ -131,6 +146,7 @@ const useDetectFace = ({ be }: useDetectFaceProps) => {
         image64,
         yaw,
         onImageChange,
+        drawCanvas,
         getYaw,
         status,
         human,
