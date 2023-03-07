@@ -22,9 +22,9 @@ const AIPage = () => {
         setImg(document.getElementsByTagName('img')[0]);
     },[onImageChange])
 
-    const imgSelect = () => {
+    const imgSelect = (id:string) => {
         if (document !== undefined) {
-            const img = document.getElementById('image1');
+            const img = document.getElementById(id);
             console.log("image1", img);
             return img;
         }
@@ -51,7 +51,7 @@ const AIPage = () => {
             <br /><br />
             <h2>Upload image</h2>
 
-            <img src={image64} alt='abc' width={256} height={256} onLoad={()=>{drawCanvas(image64)}} />
+            <img src={image64} id='upload' alt='abc' width={256} height={256} onLoad={()=>{drawCanvas(imgSelect('upload'))}} />
 
             <p style={{height: '100px', overflow: 'scroll', wordWrap: 'break-word'}}>{image64 && image64}</p>
 
@@ -61,7 +61,7 @@ const AIPage = () => {
 
             <br /><br />
 
-            {!isPress2 && <button onClick={() => { setIsPress2(true); getYaw(imgSelect() as HTMLImageElement) }} style={{ backgroundColor: 'blue', border: '2px solid black', color: 'white', padding: '10px' }}>Get data from local image</button>}
+            {!isPress2 && <button onClick={() => { setIsPress2(true); getYaw(imgSelect('image1') as HTMLImageElement) }} style={{ backgroundColor: 'blue', border: '2px solid black', color: 'white', padding: '10px' }}>Get data from local image</button>}
 
             <br /><br />
 

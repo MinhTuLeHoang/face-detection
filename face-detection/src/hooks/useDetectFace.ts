@@ -104,6 +104,8 @@ const useDetectFace = ({ be }: useDetectFaceProps) => {
         if (document) {
             var c = document.getElementById("canvas") as HTMLCanvasElement;
             console.log('canvas: ', c)
+            window.alert('canvas: ' + c)
+            window.alert('img: ' + img)
             if (!c) return;
             var ctx = c.getContext("2d") as any;
             ctx.drawImage(img, 1, 1, 256, 256);
