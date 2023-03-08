@@ -65,7 +65,7 @@ const AIPage = () => {
 
             <br /><br />
 
-            {!isPress3 && <button onClick={() => { setIsPress3(true); getYaw(canvasSelect() as HTMLImageElement) }} style={{ backgroundColor: 'blue', border: '2px solid black', color: 'white', padding: '10px' }}>Get data from canvas</button>}
+            <button onClick={() => {getYaw(canvasSelect() as HTMLImageElement) }} style={{ backgroundColor: 'red', border: '2px solid black', color: 'white', padding: '10px' }}>!!!! Get data from canvas !!!!</button>
 
             <br /><br />
 
